@@ -9,7 +9,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: AuthRoute.page),
         AutoRoute(page: RegisterRoute.page),
         AutoRoute(page: ForgetRoute.page),
-        AutoRoute(page: HomeMain.page),
+        CustomRoute(
+          page: HiddenDrawerRoute.page,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+        ),
         AutoRoute(page: WebViewRoute.page),
       ];
 }

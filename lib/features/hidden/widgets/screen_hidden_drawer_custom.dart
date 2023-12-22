@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/item_hidden_menu_custom.dart';
+import 'package:signillion/features/hidden/widgets/item_hidden_menu_custom.dart';
 
 class ScreenHiddenDrawerCustom {
   final ItemHiddenMenuCustom itemMenu;

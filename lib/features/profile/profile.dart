@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signillion/widgets/bottom_buttons/bottom_buttons.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -10,6 +11,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const BottomButtons(),
       body: Column(
         children: [
           Container(),

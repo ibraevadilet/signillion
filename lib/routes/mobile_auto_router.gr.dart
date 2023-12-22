@@ -16,8 +16,7 @@ import 'package:signillion/features/auth/presentation/forget_screen/forget_scree
     as _i2;
 import 'package:signillion/features/auth/presentation/register_screen/register_screen.dart'
     as _i4;
-import 'package:signillion/features/home/presentation/home_screen/home_screen.dart'
-    as _i3;
+import 'package:signillion/features/hidden/hidden_drawer_screen.dart' as _i3;
 import 'package:signillion/features/splash/splash_screen.dart' as _i5;
 import 'package:signillion/features/web_view/web_view_screen.dart' as _i6;
 
@@ -38,10 +37,15 @@ abstract class $AppRouter extends _i7.RootStackRouter {
         child: const _i2.ForgetScreen(),
       );
     },
-    HomeMain.name: (routeData) {
+    HiddenDrawerRoute.name: (routeData) {
+      final args = routeData.argsAs<HiddenDrawerRouteArgs>(
+          orElse: () => const HiddenDrawerRouteArgs());
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.HomeMain(),
+        child: _i3.HiddenDrawerScreen(
+          key: args.key,
+          initScreen: args.initScreen,
+        ),
       );
     },
     RegisterRoute.name: (routeData) {
@@ -99,17 +103,41 @@ class ForgetRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.HomeMain]
-class HomeMain extends _i7.PageRouteInfo<void> {
-  const HomeMain({List<_i7.PageRouteInfo>? children})
-      : super(
-          HomeMain.name,
+/// [_i3.HiddenDrawerScreen]
+class HiddenDrawerRoute extends _i7.PageRouteInfo<HiddenDrawerRouteArgs> {
+  HiddenDrawerRoute({
+    _i8.Key? key,
+    int initScreen = 0,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+          HiddenDrawerRoute.name,
+          args: HiddenDrawerRouteArgs(
+            key: key,
+            initScreen: initScreen,
+          ),
           initialChildren: children,
         );
 
-  static const String name = 'HomeMain';
+  static const String name = 'HiddenDrawerRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i7.PageInfo<HiddenDrawerRouteArgs> page =
+      _i7.PageInfo<HiddenDrawerRouteArgs>(name);
+}
+
+class HiddenDrawerRouteArgs {
+  const HiddenDrawerRouteArgs({
+    this.key,
+    this.initScreen = 0,
+  });
+
+  final _i8.Key? key;
+
+  final int initScreen;
+
+  @override
+  String toString() {
+    return 'HiddenDrawerRouteArgs{key: $key, initScreen: $initScreen}';
+  }
 }
 
 /// generated route for

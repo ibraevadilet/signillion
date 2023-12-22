@@ -1,32 +1,44 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/features/archive/archive.dart';
 import 'package:signillion/features/documents/documents.dart';
-import 'package:signillion/features/home/home_main.dart';
-import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/hidden_drower_menu_custom.dart';
-import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/item_hidden_menu_custom.dart';
-import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/screen_hidden_drawer_custom.dart';
-import 'package:signillion/features/logout/logout.dart';
+import 'package:signillion/features/hidden/widgets/hidden_drower_menu_custom.dart';
+import 'package:signillion/features/hidden/widgets/item_hidden_menu_custom.dart';
+import 'package:signillion/features/hidden/widgets/screen_hidden_drawer_custom.dart';
+import 'package:signillion/features/home/presentation/home_screen/home_screen.dart';
 import 'package:signillion/features/profile/profile.dart';
 import 'package:signillion/features/settings/settings.dart';
-import 'package:signillion/features/support/support.dart';
-import 'package:signillion/features/tasks/tasks.dart';
+import 'package:signillion/features/tasks/tasks_screen.dart';
 import 'package:signillion/features/templates/templates.dart';
 import 'package:signillion/features/trash_bin/trash_bin.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 
-class HiddenDrawer extends StatefulWidget {
-  const HiddenDrawer({super.key});
+@RoutePage()
+class HiddenDrawerScreen extends StatefulWidget {
+  const HiddenDrawerScreen({super.key, this.initScreen = 0});
+  final int initScreen;
   @override
-  State<HiddenDrawer> createState() => _HiddenDrawerState();
+  State<HiddenDrawerScreen> createState() => _HiddenDrawerScreenState();
 }
 
-class _HiddenDrawerState extends State<HiddenDrawer> {
+class _HiddenDrawerScreenState extends State<HiddenDrawerScreen> {
   List<ScreenHiddenDrawerCustom> pages = [];
 
-  String title = 'Home';
+  List<String> titleList = [
+    'Home',
+    'Documents',
+    'Templates',
+    'Tasks',
+    'Archive',
+    'Trash Bin',
+    'Profile',
+    'Settings',
+  ];
+
+  late String title = titleList[widget.initScreen];
 
   @override
   void initState() {
@@ -86,7 +98,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
             });
           },
         ),
-        const Tasks(),
+        const TasksScreen(),
       ),
       ScreenHiddenDrawerCustom(
         ItemHiddenMenuCustom(
@@ -154,9 +166,11 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
       backgroundColorAppBar: Colors.white,
       elevationAppBar: 1,
       screens: pages,
-      initPositionSelected: 0,
+      initPositionSelected: widget.initScreen,
       verticalScalePercent: 65,
       slidePercent: 60,
+      styleAutoTittleName:
+          AppTextStyles.s26W700(color: AppColors.colorBlue0821AE),
       actionsAppBar: [
         Padding(
           padding: const EdgeInsets.only(right: 15),

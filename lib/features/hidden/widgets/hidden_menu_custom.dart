@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hidden_drawer_menu/controllers/simple_hidden_drawer_controller.dart';
 import 'package:hidden_drawer_menu/simple_hidden_drawer/animated_drawer_content.dart';
 import 'package:signillion/core/images/app_images.dart';
-import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/hidden_menu_item_custom.dart';
-import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/item_hidden_menu_custom.dart';
+import 'package:signillion/features/hidden/widgets/hidden_menu_item_custom.dart';
+import 'package:signillion/features/hidden/widgets/item_hidden_menu_custom.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 
 class HiddenMenuCustom extends StatefulWidget {
