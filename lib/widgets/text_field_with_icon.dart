@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:signillion/core/formatters/input_borders.dart';
 import 'package:signillion/theme/app_colors.dart';
+import 'package:signillion/theme/app_text_styles.dart';
 
 class TextFiledWithIcon extends StatelessWidget {
   const TextFiledWithIcon({
@@ -58,16 +59,19 @@ class TextFiledWithIcon extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: hintText,
                 labelText: labelText,
-                border: AppInputBorders
-                    .outlineBorderColor10Grey004646Width1Radius12RIGHT,
-                enabledBorder: AppInputBorders
-                    .outlineBorderColor10Grey004646Width1Radius12RIGHT,
+                hintStyle: AppTextStyles.s14W400(
+                  color: AppColors.colorGrey9A9A9A,
+                ),
+                border:
+                    AppInputBorders.outlineBorderColor10Grey004646Radius12RIGHT,
+                enabledBorder:
+                    AppInputBorders.outlineBorderColor10Grey004646Radius12RIGHT,
                 focusedBorder: AppInputBorders
-                    .outlineBorderColor100Black101820Width1Radius12RIGHT,
+                    .outlineBorderColor100Black101820Radius12RIGHT,
                 focusedErrorBorder: AppInputBorders
-                    .outlineBorderColor100Black101820Width1Radius12RIGHT,
+                    .outlineBorderColor100Black101820Radius12RIGHT,
                 errorBorder: AppInputBorders
-                    .outlineBorderColor100Black101820Width1Radius12RIGHT,
+                    .outlineBorderColor100Black101820Radius12RIGHT,
               ),
             ),
           ),

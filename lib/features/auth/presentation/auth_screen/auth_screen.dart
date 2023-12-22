@@ -33,11 +33,12 @@ class AuthScreen extends StatelessWidget {
                   children: [
                     TextFiledWithIcon(
                       icon: AppImages.emailIconSvg,
-                      
+                      hintText: 'Email',
                     ),
                     SizedBox(height: 12),
                     TextFiledWithIcon(
                       icon: AppImages.passwordIconSvg,
+                      hintText: 'Password',
                     ),
                   ],
                 ),

@@ -19,7 +19,7 @@ class SplashCubit extends Cubit<SplashState> {
     await Future.delayed(const Duration(seconds: 2));
 
     if (token.isEmpty) {
-      AppRouting.pushFunction(const ForgetRoute());
+      AppRouting.pushAndPopUntilFunction(const AuthRoute());
     } else {
       AppRouting.pushAndPopUntilFunction(const HomeRoute());
     }
