@@ -5,6 +5,8 @@ import 'package:hidden_drawer_menu/model/screen_hidden_drawer.dart';
 import 'package:hidden_drawer_menu/simple_hidden_drawer/animated_drawer_content.dart';
 import 'package:hidden_drawer_menu/simple_hidden_drawer/simple_hidden_drawer.dart';
 import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/hidden_menu_custom.dart';
+import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/item_hidden_menu_custom.dart';
+import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/screen_hidden_drawer_custom.dart';
 
 export 'package:hidden_drawer_menu/controllers/animated_drawer_controller.dart';
 export 'package:hidden_drawer_menu/controllers/simple_hidden_drawer_controller.dart';
@@ -17,7 +19,7 @@ export 'package:hidden_drawer_menu/simple_hidden_drawer/simple_hidden_drawer.dar
 
 class HiddenDrawerMenuCustom extends StatelessWidget {
   /// List item menu and respective screens
-  final List<ScreenHiddenDrawer> screens;
+  final List<ScreenHiddenDrawerCustom> screens;
 
   /// position initial item selected in menu( sart in 0)
   final int initPositionSelected;
@@ -157,7 +159,7 @@ class HiddenDrawerMenuCustom extends StatelessWidget {
   }
 
   Widget _buildMenu() {
-    List<ItemHiddenMenu> itensMenu = [];
+    List<ItemHiddenMenuCustom> itensMenu = [];
 
     for (var item in screens) {
       itensMenu.add(item.itemMenu);

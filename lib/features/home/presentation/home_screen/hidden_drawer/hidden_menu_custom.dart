@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hidden_drawer_menu/controllers/simple_hidden_drawer_controller.dart';
-import 'package:hidden_drawer_menu/model/item_hidden_menu.dart';
 import 'package:hidden_drawer_menu/simple_hidden_drawer/animated_drawer_content.dart';
+import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/hidden_menu_item_custom.dart';
+import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/item_hidden_menu_custom.dart';
+import 'package:signillion/theme/app_text_styles.dart';
 
 class HiddenMenuCustom extends StatefulWidget {
   /// Decocator that allows us to add backgroud in the menu(img)
@@ -15,7 +18,7 @@ class HiddenMenuCustom extends StatefulWidget {
   final Color backgroundColorMenu;
 
   /// Items of the menu
-  final List<ItemHiddenMenu> items;
+  final List<ItemHiddenMenuCustom> items;
 
   /// Callback to receive item selected for user
   final Function(int)? selectedListen;
@@ -73,10 +76,17 @@ class _HiddenMenuCustomState extends State<HiddenMenuCustom> {
         ),
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              Image.asset(
+                AppImages.logo,
+                width: 230,
+                height: 80,
+                color: Colors.white,
+              ),
+              Expanded(
                 child: Container(
-                  padding: const EdgeInsets.only(top: 40.0, bottom: 40.0),
+                  padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
                   decoration: BoxDecoration(
                     boxShadow: widget.enableShadowItemsMenu
                         ? [
@@ -96,6 +106,8 @@ class _HiddenMenuCustomState extends State<HiddenMenuCustom> {
                     itemCount: widget.items.length,
                     itemBuilder: (context, index) {
                       return HiddenMenuItemCustom(
+                        index: index,
+                        nameSvg: widget.items[index].icon,
                         name: widget.items[index].name,
                         selected: index == _indexSelected,
                         colorLineSelected:
@@ -114,6 +126,44 @@ class _HiddenMenuCustomState extends State<HiddenMenuCustom> {
                   ),
                 ),
               ),
+              Row(
+                children: [
+                  const SizedBox(width: 35),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppImages.logoutIconSvg,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          'Logout',
+                          style: AppTextStyles.s17W400(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppImages.supportIconSvg,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          'Support',
+                          style: AppTextStyles.s17W400(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 35),
+                ],
+              ),
+              const SizedBox(height: 22),
             ],
           ),
         ),
