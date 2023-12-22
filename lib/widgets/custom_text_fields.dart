@@ -36,9 +36,9 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
-        border: AppInputBorders.outlineBorderColor100Black101820Width1Radius12,
+        border: AppInputBorders.outlineBorderColor10Grey004646Width1Radius12,
         enabledBorder:
-            AppInputBorders.outlineBorderColor100Black101820Width1Radius12,
+            AppInputBorders.outlineBorderColor10Grey004646Width1Radius12,
         focusedBorder:
             AppInputBorders.outlineBorderColor100Black101820Width1Radius12,
         focusedErrorBorder:

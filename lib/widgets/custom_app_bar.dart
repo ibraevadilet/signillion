@@ -22,9 +22,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: titleWidget ?? FittedBox(child: Text(title!)),
-      titleTextStyle: AppTextStyles.s20W700(),
+      titleTextStyle: AppTextStyles.s18W700(),
       elevation: 0,
       centerTitle: centerTitle,
+      iconTheme: const IconThemeData(
+        color: Colors.black,
+      ),
       leading: icon,
       actions: actions,
     );

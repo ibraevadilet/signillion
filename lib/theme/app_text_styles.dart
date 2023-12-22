@@ -26,6 +26,11 @@ abstract class AppTextStyles {
         fontSize: 16,
         fontWeight: FontWeight.w500,
       );
+  static TextStyle s16WBold({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      );
   static TextStyle s18W700({Color? color}) => TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w700,
