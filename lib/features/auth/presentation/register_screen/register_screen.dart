@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:signillion/core/constants/app_text_constants.dart';
+import 'package:signillion/core/functions/push_router_func.dart';
 import 'package:signillion/features/auth/presentation/register_screen/widgets/password_text_filed.dart';
+import 'package:signillion/routes/mobile_auto_router.gr.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 import 'package:signillion/widgets/app_unfocuser.dart';
@@ -39,6 +43,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                RichText(
+                  textAlign: TextAlign.start,
+                  text: TextSpan(
+                    text:
+                        'By selecting Agree and continue, I agree to Dynamic Layers ',
+                    style: AppTextStyles.s15W400(),
+                    children: [
+                      TextSpan(
+                        text: 'Terms of Service',
+                        style: AppTextStyles.s15W600(color: Colors.deepPurple),
+                        recognizer: TapGestureRecognizer()..onTap = () {},
+                      ),
+                      const TextSpan(
+                        text: ' and acknowledge the ',
+                      ),
+                      TextSpan(
+                        text: 'Privacy Policy',
+                        style: AppTextStyles.s15W600(color: Colors.deepPurple),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            AppRouting.pushFunction(
+                              WebViewRoute(
+                                title: 'Privacy Policy',
+                                url: AppTextConstants.policyUrl,
+                              ),
+                            );
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
                 CustomButton(
                   textColor:
                       allRight ? Colors.white : AppColors.color60Black101820,

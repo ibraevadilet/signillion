@@ -8,8 +8,18 @@ import 'package:signillion/widgets/custom_button.dart';
 import 'package:signillion/widgets/custom_text_fields.dart';
 
 @RoutePage()
-class ForgetScreen extends StatelessWidget {
+class ForgetScreen extends StatefulWidget {
   const ForgetScreen({super.key});
+
+  @override
+  State<ForgetScreen> createState() => _ForgetScreenState();
+}
+
+class _ForgetScreenState extends State<ForgetScreen> {
+  String myEmail = 'ibraevadilet3@gmail.com';
+
+  String emailValue = '';
+  bool isError = false;
   @override
   Widget build(BuildContext context) {
     return AppUnfocuser(
@@ -22,15 +32,25 @@ class ForgetScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomTextField(
+              CustomTextField(
+                isError: isError,
+                onChanged: (value) {
+                  setState(() {
+                    emailValue = value;
+                    isError = emailValue != myEmail;
+                  });
+                },
                 labelText: 'Email',
               ),
               const SizedBox(height: 14),
-              Text(
-                '* This email address have no account',
-                style: AppTextStyles.s16W400(
-                  color: const Color.fromARGB(255, 239, 16, 0),
-                  fontSize: 16,
+              Visibility(
+                visible: isError,
+                child: Text(
+                  '* This email address have no account',
+                  style: AppTextStyles.s16W400(
+                    color: AppColors.colorRedEF1000,
+                    fontSize: 16,
+                  ),
                 ),
               ),
               const SizedBox(height: 14),
@@ -40,10 +60,15 @@ class ForgetScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               CustomButton(
-                color: AppColors.colorBlue0821AE,
-                onPress: () {},
+                textColor:
+                    isError ? Colors.white : AppColors.color60Black101820,
+                color: isError
+                    ? AppColors.colorBlue0821AE
+                    : AppColors.color20Black101820,
+                onPress: () {
+                  if (isError) {}
+                },
                 text: 'Define new password',
-                textStyle: AppTextStyles.s16WBold(color: Colors.white),
               ),
             ],
           ),

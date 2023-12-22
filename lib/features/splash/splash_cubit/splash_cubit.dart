@@ -21,7 +21,7 @@ class SplashCubit extends Cubit<SplashState> {
     if (token.isNotEmpty) {
       AppRouting.pushAndPopUntilFunction(const AuthRoute());
     } else {
-      AppRouting.pushAndPopUntilFunction(const HomeRoute());
+      AppRouting.pushAndPopUntilFunction(const HomeMain());
     }
   }
 }

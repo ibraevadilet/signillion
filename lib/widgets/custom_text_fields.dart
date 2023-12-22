@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 
@@ -17,6 +19,7 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon = false,
     this.onFocusChange,
     this.onChanged,
+    this.isError = false,
   });
 
   final List<TextInputFormatter>? inputFormatters;
@@ -30,6 +33,7 @@ class CustomTextField extends StatefulWidget {
   final bool suffixIcon;
   final Function(String)? onChanged;
   final Function(bool)? onFocusChange;
+  final bool isError;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -85,11 +89,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       color: AppColors.color60Black101820,
                     ),
                   )
-                : null,
+                : widget.isError
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: SvgPicture.asset(
+                          AppImages.exclamationIconSvg,
+                        ),
+                      )
+                    : null,
             hintText: widget.hintText,
             labelText: widget.labelText,
             labelStyle: AppTextStyles.s16W400(
-              color: AppColors.color60Black101820,
+              color: widget.isError
+                  ? AppColors.colorRedEF1000
+                  : AppColors.color60Black101820,
             ),
             border: InputBorder.none,
             enabledBorder: InputBorder.none,
