@@ -51,7 +51,9 @@ class AuthScreen extends StatelessWidget {
                         const SizedBox(height: 12),
                         Center(
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              AppRouting.pushFunction(const ForgetRoute());
+                            },
                             child: Text(
                               'Forgot password?',
                               style: AppTextStyles.s14W400(

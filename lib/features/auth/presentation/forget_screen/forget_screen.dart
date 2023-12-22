@@ -16,10 +16,6 @@ class ForgetScreen extends StatelessWidget {
       child: Scaffold(
         appBar: const CustomAppBar(
           title: 'Forget password',
-          icon: Icon(
-            Icons.chevron_left_rounded,
-            size: 35,
-          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20),
@@ -56,4 +52,3 @@ class ForgetScreen extends StatelessWidget {
     );
   }
 }
-
