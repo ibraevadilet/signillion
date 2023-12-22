@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 abstract class AppTextStyles {
+  static TextStyle s12W400({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+      );
   static TextStyle s14W400({Color? color}) => TextStyle(
         color: color ?? Colors.black,
         fontSize: 14,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:signillion/core/formatters/input_borders.dart';
+import 'package:signillion/theme/app_colors.dart';
+import 'package:signillion/theme/app_text_styles.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
     this.inputFormatters,
@@ -13,6 +14,9 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.isOutline = true,
     this.hintText,
+    this.suffixIcon = false,
+    this.onFocusChange,
+    this.onChanged,
   });
 
   final List<TextInputFormatter>? inputFormatters;
@@ -23,28 +27,77 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool isOutline;
   final String? hintText;
+  final bool suffixIcon;
+  final Function(String)? onChanged;
+  final Function(bool)? onFocusChange;
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  final FocusNode _focusNode = FocusNode();
+
+  bool hasFocus = false;
+  bool _isVisible = false;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      inputFormatters: inputFormatters,
-      controller: controller,
-      keyboardType: keyboardType,
-      obscureText: obscureText,
-      validator: validator,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      decoration: InputDecoration(
-        hintText: hintText,
-        labelText: labelText,
-        border: AppInputBorders.outlineBorderColor10Grey004646Radius12,
-        enabledBorder:
-            AppInputBorders.outlineBorderColor10Grey004646Radius12,
-        focusedBorder:
-            AppInputBorders.outlineBorderColor100Black101820Radius12,
-        focusedErrorBorder:
-            AppInputBorders.outlineBorderColor100Black101820Radius12,
-        errorBorder:
-            AppInputBorders.outlineBorderColor100Black101820Radius12,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: hasFocus ? Colors.black : AppColors.color10Grey004646,
+          width: 1,
+        ),
+      ),
+      child: Focus(
+        onFocusChange: (focus) {
+          if (widget.onFocusChange != null) {
+            widget.onFocusChange!(focus);
+          }
+          setState(() {
+            hasFocus = focus;
+          });
+        },
+        child: TextFormField(
+          onChanged: widget.onChanged,
+          focusNode: _focusNode,
+          inputFormatters: widget.inputFormatters,
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          obscureText:
+              widget.obscureText && widget.suffixIcon ? !_isVisible : false,
+          validator: widget.validator,
+          cursorColor: Colors.black,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          decoration: InputDecoration(
+            suffixIcon: widget.suffixIcon
+                ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isVisible = !_isVisible;
+                      });
+                    },
+                    icon: Icon(
+                      _isVisible ? Icons.visibility : Icons.visibility_off,
+                      color: AppColors.color60Black101820,
+                    ),
+                  )
+                : null,
+            hintText: widget.hintText,
+            labelText: widget.labelText,
+            labelStyle: AppTextStyles.s16W400(
+              color: AppColors.color60Black101820,
+            ),
+            border: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            focusedErrorBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+          ),
+        ),
       ),
     );
   }
