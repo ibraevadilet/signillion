@@ -9,6 +9,7 @@ abstract class AppColors {
   static const Color color60Blue0921B0 = Color(0x990921B0);
   static const Color color40Blue0921B0 = Color(0x660921B0);
   static const Color color20Blue0921B0 = Color(0x330921B0);
+  static const Color colorGrey = Color.fromARGB(255, 219, 206, 206);
 
   static const Color color100Black101820 = Color(0xff101820);
   static const Color color80Black101820 = Color(0xcc101820);
