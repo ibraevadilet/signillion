@@ -1,20 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:signillion/features/home/presentation/home_screen/hidden_drawer/hidden_drawer.dart';
 
 @RoutePage()
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeMain extends StatelessWidget {
+  const HomeMain({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeScreen'),
-      ),
-      body: Column(
-        children: [
-          Container(),
-        ],
-      ),
-    );
+    return const HiddenDrawer();
   }
 }
