@@ -95,57 +95,59 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 12),
-              CustomTextField(
-                labelText: 'First name',
-                controller: firstNameController,
-              ),
-              const SizedBox(height: 8),
-              CustomTextField(
-                labelText: 'Last name',
-                controller: lastNameController,
-              ),
-              const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  'Make sure it matches the name on your government ID.',
-                  style: AppTextStyles.s14W400(
-                    color: AppColors.color60Black101820,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 12),
+                CustomTextField(
+                  labelText: 'First name',
+                  controller: firstNameController,
+                ),
+                const SizedBox(height: 8),
+                CustomTextField(
+                  labelText: 'Last name',
+                  controller: lastNameController,
+                ),
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    'Make sure it matches the name on your government ID.',
+                    style: AppTextStyles.s14W400(
+                      color: AppColors.color60Black101820,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              CustomTextField(
-                labelText: 'Email',
-                controller: emailController,
-              ),
-              const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  'We will email you trip confirmations and receipts.',
-                  style: AppTextStyles.s14W400(
-                    color: AppColors.color60Black101820,
+                const SizedBox(height: 12),
+                CustomTextField(
+                  labelText: 'Email',
+                  controller: emailController,
+                ),
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    'We will email you trip confirmations and receipts.',
+                    style: AppTextStyles.s14W400(
+                      color: AppColors.color60Black101820,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              PasswordTextFiled(
-                firstName: firstNameController,
-                lastName: lastNameController,
-                email: emailController,
-                password: (password) {
-                  setState(() {
-                    isRightPassword = password;
-                  });
-                },
-              ),
-              Container(),
-            ],
+                const SizedBox(height: 12),
+                PasswordTextFiled(
+                  firstName: firstNameController,
+                  lastName: lastNameController,
+                  email: emailController,
+                  password: (password) {
+                    setState(() {
+                      isRightPassword = password;
+                    });
+                  },
+                ),
+                Container(),
+              ],
+            ),
           ),
         ),
       ),

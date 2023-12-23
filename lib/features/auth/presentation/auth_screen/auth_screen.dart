@@ -65,7 +65,11 @@ class AuthScreen extends StatelessWidget {
                         const SizedBox(height: 12),
                         CustomButton(
                           color: AppColors.colorBlue1525B7,
-                          onPress: () {},
+                          onPress: () {
+                            AppRouting.pushAndPopUntilFunction(
+                              HiddenDrawerRoute(),
+                            );
+                          },
                           text: 'Login',
                         ),
                       ],

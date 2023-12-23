@@ -18,7 +18,7 @@ class SplashCubit extends Cubit<SplashState> {
     final token = prefs.getString(SharedKeys.token) ?? '';
     await Future.delayed(const Duration(seconds: 2));
 
-    if (token.isNotEmpty) {
+    if (token.isEmpty) {
       AppRouting.pushAndPopUntilFunction(const AuthRoute());
     } else {
       AppRouting.pushAndPopUntilFunction(HiddenDrawerRoute());

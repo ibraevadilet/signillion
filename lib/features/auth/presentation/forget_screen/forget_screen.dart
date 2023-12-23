@@ -60,13 +60,14 @@ class _ForgetScreenState extends State<ForgetScreen> {
               ),
               const SizedBox(height: 20),
               CustomButton(
-                textColor:
-                    isError ? Colors.white : AppColors.color60Black101820,
-                color: isError
-                    ? AppColors.colorBlue0821AE
-                    : AppColors.color20Black101820,
+                textColor: isError || emailValue.isEmpty
+                    ? AppColors.color60Black101820
+                    : Colors.white,
+                color: isError || emailValue.isEmpty
+                    ? AppColors.color20Black101820
+                    : AppColors.colorBlue0821AE,
                 onPress: () {
-                  if (isError) {}
+                  if (isError || emailValue.isEmpty) {}
                 },
                 text: 'Define new password',
               ),
