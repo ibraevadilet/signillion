@@ -31,4 +31,5 @@ class AppImages {
   static const String tasksIconSvg = 'assets/images/tasks_icon_svg.svg';
   static const String templatesIconSvg = 'assets/images/templates_icon_svg.svg';
   static const String trashIconSvg = 'assets/images/trash_icon_svg.svg';
+  static const String penciIconSvg = 'assets/images/penci_icon_svg.svg';
 }

@@ -191,7 +191,7 @@ class _HiddenDrawerScreenState extends State<HiddenDrawerScreen> {
             )
           : null,
       leadingAppBar: Padding(
-        padding: const EdgeInsets.only(left: 5),
+        padding: const EdgeInsets.only(left: 8),
         child: SvgPicture.asset(AppImages.drawerIconSvg),
       ),
     );
