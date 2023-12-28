@@ -10,6 +10,7 @@ import 'package:signillion/features/hidden/widgets/screen_hidden_drawer_custom.d
 import 'package:signillion/features/home/presentation/home_screen/home_screen.dart';
 import 'package:signillion/features/profile/profile.dart';
 import 'package:signillion/features/settings/settings.dart';
+import 'package:signillion/features/tasks/tasks_calendar.dart';
 import 'package:signillion/features/tasks/tasks_screen.dart';
 import 'package:signillion/features/templates/templates.dart';
 import 'package:signillion/features/trash_bin/trash_bin.dart';
@@ -140,7 +141,7 @@ class _HiddenDrawerScreenState extends State<HiddenDrawerScreen> {
             });
           },
         ),
-        const Profile(),
+        const ProfileScreen(),
       ),
       ScreenHiddenDrawerCustom(
         ItemHiddenMenuCustom(
@@ -171,18 +172,42 @@ class _HiddenDrawerScreenState extends State<HiddenDrawerScreen> {
       slidePercent: 60,
       styleAutoTittleName:
           AppTextStyles.s26W700(color: AppColors.colorBlue0821AE),
-      actionsAppBar: [
-        Padding(
-          padding: const EdgeInsets.only(right: 15),
-          child: IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              AppImages.searchIconSvg,
-              width: 27,
-            ),
-          ),
-        ),
-      ],
+      actionsAppBar: title == 'Profile'
+          ? []
+          : [
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    title == 'Tasks'
+                        ? InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const TasksCalendar(),
+                                ),
+                              );
+                            },
+                            child: SvgPicture.asset(
+                              AppImages.tasksAppbarIconSvg,
+                              width: 29,
+                              color: AppColors.colorGrey474747,
+                            ),
+                          )
+                        : InkWell(
+                            onTap: () {},
+                            child: SvgPicture.asset(
+                              AppImages.searchIconSvg,
+                              width: 29,
+                              color: AppColors.colorGrey474747,
+                            ),
+                          ),
+                  ],
+                ),
+              ),
+            ],
       tittleAppBar: title == 'Home'
           ? Image.asset(
               AppImages.logo,

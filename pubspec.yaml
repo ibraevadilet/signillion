@@ -56,6 +56,9 @@ dependencies:
   hidden_drawer_menu: ^3.0.1
   webview_flutter: ^4.4.2
   flutter_inset_box_shadow: ^1.0.8
+  table_calendar: ^3.0.9
+  signature: ^5.4.1
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:

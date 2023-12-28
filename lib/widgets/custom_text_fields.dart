@@ -20,6 +20,10 @@ class CustomTextField extends StatefulWidget {
     this.onFocusChange,
     this.onChanged,
     this.isError = false,
+    this.isFilled = false,
+    this.fillColor,
+    this.hasFocuSColor,
+    this.widthBorder,
   });
 
   final List<TextInputFormatter>? inputFormatters;
@@ -34,6 +38,10 @@ class CustomTextField extends StatefulWidget {
   final Function(String)? onChanged;
   final Function(bool)? onFocusChange;
   final bool isError;
+  final bool isFilled;
+  final double? widthBorder;
+  final Color? fillColor;
+  final Color? hasFocuSColor;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -52,8 +60,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: hasFocus ? Colors.black : AppColors.color10Grey004646,
-          width: 1,
+          color: hasFocus
+              ? widget.hasFocuSColor ?? Colors.black
+              : AppColors.color10Grey004646,
+          width: widget.widthBorder ?? 1,
         ),
       ),
       child: Focus(
@@ -77,6 +87,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           cursorColor: Colors.black,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
+            fillColor: widget.fillColor,
+            filled: widget.isFilled,
             suffixIcon: widget.suffixIcon
                 ? IconButton(
                     onPressed: () {
@@ -99,7 +111,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     : null,
             hintText: widget.hintText,
             labelText: widget.labelText,
-            labelStyle: AppTextStyles.s16W400(
+            labelStyle: AppTextStyles.s12W400(
               color: widget.isError
                   ? AppColors.colorRedEF1000
                   : AppColors.color60Black101820,

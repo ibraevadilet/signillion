@@ -1,15 +1,35 @@
 import 'package:flutter/material.dart';
 
 abstract class AppTextStyles {
+  static TextStyle s10Wbold({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 10,
+        fontWeight: FontWeight.bold,
+      );
   static TextStyle s12W400({Color? color}) => TextStyle(
         color: color ?? Colors.black,
         fontSize: 12,
         fontWeight: FontWeight.w400,
       );
+  static TextStyle s11W400({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 11,
+        fontWeight: FontWeight.w400,
+      );
+  static TextStyle s12Wbold({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 12,
+        fontWeight: FontWeight.bold,
+      );
   static TextStyle s14W400({Color? color}) => TextStyle(
         color: color ?? Colors.black,
         fontSize: 14,
         fontWeight: FontWeight.w400,
+      );
+  static TextStyle s14W500({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
       );
   static TextStyle s14Wbold({Color? color}) => TextStyle(
         color: color ?? Colors.black,
@@ -46,6 +66,11 @@ abstract class AppTextStyles {
         fontWeight: FontWeight.w700,
         color: color ?? Colors.black,
       );
+  static TextStyle s18Wbold({Color? color}) => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: color ?? Colors.black,
+      );
   static TextStyle s17W400({Color? color, double? fontSize}) => TextStyle(
         color: color ?? Colors.black,
         fontSize: fontSize ?? 17,
@@ -71,6 +96,16 @@ abstract class AppTextStyles {
         fontSize: 20,
         color: color ?? Colors.black,
         fontWeight: FontWeight.w700,
+      );
+  static TextStyle s20W400({Color? color}) => TextStyle(
+        fontSize: 20,
+        color: color ?? Colors.black,
+        fontWeight: FontWeight.w400,
+      );
+  static TextStyle s20Wbold({Color? color}) => TextStyle(
+        fontSize: 20,
+        color: color ?? Colors.black,
+        fontWeight: FontWeight.bold,
       );
   static TextStyle s26W700({Color? color}) => TextStyle(
         fontSize: 26,

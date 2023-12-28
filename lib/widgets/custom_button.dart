@@ -19,6 +19,7 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.child,
     this.borderColor,
+    this.isActivePadding = false,
     this.textColor = Colors.white,
   }) : super(key: key);
 
@@ -36,13 +37,14 @@ class CustomButton extends StatelessWidget {
   final String? text;
   final Function() onPress;
   final Widget? child;
+  final bool isActivePadding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: aroundButtonPadding,
       child: CupertinoButton(
-        padding: EdgeInsets.zero,
+        padding: isActivePadding ? null : EdgeInsets.zero,
         onPressed: isLoading ? null : onPress,
         child: Container(
           alignment: Alignment.center,

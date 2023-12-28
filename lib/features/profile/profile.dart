@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
@@ -7,13 +10,15 @@ import 'package:signillion/widgets/bottom_buttons/bottom_buttons.dart';
 import 'package:signillion/widgets/custom_button.dart';
 import 'package:signillion/widgets/spaces.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileScreenState extends State<ProfileScreen> {
+  File? image;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,12 +100,17 @@ class _ProfileState extends State<Profile> {
             const SizedBox(height: 20),
             Center(
               child: Container(
-                height: 60,
+                height: 63,
                 width: 170,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: AppColors.colorGreyEAEAEA,
                 ),
+                child: image == null
+                    ? const SizedBox()
+                    : Image.file(
+                        image!,
+                      ),
               ),
             ),
             const SizedBox(height: 10),
@@ -109,8 +119,14 @@ class _ProfileState extends State<Profile> {
                 width: 176,
                 height: 49,
                 color: AppColors.colorBlue0821AE,
-                onPress: () {
-                  
+                onPress: () async {
+                  final ImagePicker picker = ImagePicker();
+                  final result =
+                      await picker.pickImage(source: ImageSource.gallery);
+                  if (result != null) {
+                    image = File(result.path);
+                  }
+                  setState(() {});
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
