@@ -15,11 +15,8 @@ class DocumentShareScreen extends StatefulWidget {
 class _DocumentShareScreenState extends State<DocumentShareScreen> {
   @override
   void initState() {
-    Share.shareXFiles(
-      [
-        XFile('assets/images/logo.png'),
-      ],
-      text: 'Документ имя',
+    Share.share(
+      'https://www.supersprint.com/public/img/01-504900-504930-504960-504990-505020.jpg',
     ).then((value) => AppRouting.popFunction());
     super.initState();
   }

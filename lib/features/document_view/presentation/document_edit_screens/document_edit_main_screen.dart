@@ -66,32 +66,41 @@ class _DocumentEditMainScreenState extends State<DocumentEditMainScreen> {
                   icon: AppImages.kaIconSvg,
                 ),
                 const SizedBox(width: 11),
-                EditBottomItemWidget(
-                  onTap: () {},
-                  icon: AppImages.aaIconSvg,
-                  widthIcon: 30,
-                  title: 'Initials',
-                  height: 13,
+                Expanded(
+                  child: EditBottomItemWidget(
+                    onTap: () {},
+                    icon: AppImages.aaIconSvg,
+                    widthIcon: 30,
+                    title: 'Initials',
+                    height: 13,
+                  ),
                 ),
                 const SizedBox(width: 11),
-                EditBottomItemWidget(
-                  onTap: () {},
-                  icon: AppImages.smsTIconSvg,
-                  title: 'Text',
+                Expanded(
+                  child: EditBottomItemWidget(
+                    onTap: () {},
+                    icon: AppImages.smsTIconSvg,
+                    title: 'Text',
+                  ),
                 ),
                 const SizedBox(width: 11),
-                EditBottomItemWidget(
-                  onTap: () {},
-                  icon: AppImages.chIconSvg,
-                  title: 'Date',
+                Expanded(
+                  child: EditBottomItemWidget(
+                    onTap: () {},
+                    icon: AppImages.chIconSvg,
+                    title: 'Date',
+                  ),
                 ),
-                const SizedBox(width: 12),
-                EditBottomItemWidget(
-                  onTap: () {},
-                  icon: AppImages.btIconSvg,
-                  widthIcon: 13.50,
-                  title: 'Stamp',
+                const SizedBox(width: 11),
+                Expanded(
+                  child: EditBottomItemWidget(
+                    onTap: () {},
+                    icon: AppImages.btIconSvg,
+                    widthIcon: 13.50,
+                    title: 'Stamp',
+                  ),
                 ),
+                const SizedBox(width: 23),
               ],
             ),
             const SizedBox(height: 17),

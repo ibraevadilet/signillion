@@ -9,43 +9,46 @@ class DocumentHeader extends StatelessWidget {
   final Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 70, left: 12, right: 25),
-          child: Row(
-            children: [
-              const SizedBox(width: 10),
-              Text(
-                'doc_name',
-                style: AppTextStyles.s20Wbold(color: AppColors.colorBlue0821AE),
-              ),
-              const Spacer(),
-              InkWell(
-                onTap: onTap ??
-                    () {
-                      Navigator.pop(context);
-                    },
-                child: Text(
-                  'Done',
+    return SafeArea(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20, left: 12, right: 25),
+            child: Row(
+              children: [
+                const SizedBox(width: 10),
+                Text(
+                  'doc_name',
                   style:
-                      AppTextStyles.s16W500(color: AppColors.colorBlue0821AE),
+                      AppTextStyles.s20Wbold(color: AppColors.colorBlue0821AE),
                 ),
-              ),
-            ],
+                const Spacer(),
+                InkWell(
+                  onTap: onTap ??
+                      () {
+                        Navigator.pop(context);
+                      },
+                  child: Text(
+                    'Done',
+                    style:
+                        AppTextStyles.s16W500(color: AppColors.colorBlue0821AE),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        const Divider(
-          thickness: 1,
-          height: 30,
-          color: AppColors.colorGrey,
-        ),
-        Expanded(
-          child: SvgPicture.asset(
-            AppImages.listIcnoSvg,
+          const Divider(
+            thickness: 1,
+            height: 30,
+            color: AppColors.colorGrey,
           ),
-        ),
-      ],
+          Expanded(
+            child: SvgPicture.asset(
+              AppImages.listIcnoSvg,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

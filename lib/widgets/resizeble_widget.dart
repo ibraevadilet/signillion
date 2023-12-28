@@ -11,7 +11,7 @@ class ResizebleWidget extends StatefulWidget {
   State<ResizebleWidget> createState() => _ResizebleWidgetState();
 }
 
-const ballDiameter = 10.0;
+const ballDiameter = 30.0;
 
 class _ResizebleWidgetState extends State<ResizebleWidget> {
   double size = 200;
