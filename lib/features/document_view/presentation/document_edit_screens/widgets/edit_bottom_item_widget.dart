@@ -4,8 +4,8 @@ import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 
-class EditDateilWidget extends StatelessWidget {
-  const EditDateilWidget({
+class EditBottomItemWidget extends StatelessWidget {
+  const EditBottomItemWidget({
     super.key,
     this.title,
     this.icon,

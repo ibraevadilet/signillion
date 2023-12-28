@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:signillion/theme/app_colors.dart';
@@ -21,6 +20,7 @@ class _TemplatesState extends State<Templates> {
         length: 2,
         child: Column(
           children: [
+            const SizedBox(height: 12),
             Center(
               child: Container(
                 height: 45,

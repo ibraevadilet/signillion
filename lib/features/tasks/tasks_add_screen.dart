@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:signillion/core/functions/push_router_func.dart';
 import 'package:signillion/core/images/app_images.dart';
-import 'package:signillion/features/tasks/tasks_calendar.dart';
+import 'package:signillion/routes/mobile_auto_router.gr.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 import 'package:signillion/widgets/app_unfocuser.dart';
@@ -11,13 +13,14 @@ import 'package:signillion/widgets/custom_app_bar.dart';
 import 'package:signillion/widgets/custom_button.dart';
 import 'package:signillion/widgets/custom_text_fields_Two.dart';
 
-class TasksOpen extends StatefulWidget {
-  const TasksOpen({super.key});
+@RoutePage()
+class TaskAddScreen extends StatefulWidget {
+  const TaskAddScreen({super.key});
   @override
-  State<TasksOpen> createState() => _TasksOpenState();
+  State<TaskAddScreen> createState() => _TaskAddScreenState();
 }
 
-class _TasksOpenState extends State<TasksOpen> {
+class _TaskAddScreenState extends State<TaskAddScreen> {
   final TextEditingController controllerOne = TextEditingController();
   final TextEditingController controllerTwo = TextEditingController();
   int isTitel = 0;
@@ -34,12 +37,7 @@ class _TasksOpenState extends State<TasksOpen> {
               padding: const EdgeInsets.only(right: 20),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const TasksCalendar(),
-                    ),
-                  );
+                  AppRouting.pushFunction(const TasksCalendarRoute());
                 },
                 child: SvgPicture.asset(
                   AppImages.tasksAppbarIconSvg,

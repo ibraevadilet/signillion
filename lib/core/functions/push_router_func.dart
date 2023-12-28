@@ -7,6 +7,10 @@ class AppRouting {
     sl<AppRouter>().push(route);
   }
 
+  static popFunction() {
+    sl<AppRouter>().pop();
+  }
+
   static pushAndPopUntilFunction(PageRouteInfo<dynamic> route) {
     sl<AppRouter>().pushAndPopUntil(
       route,

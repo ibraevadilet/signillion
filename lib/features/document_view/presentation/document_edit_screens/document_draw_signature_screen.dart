@@ -1,20 +1,24 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:signature/signature.dart';
 import 'package:signillion/core/images/app_images.dart';
-import 'package:signillion/features/pages/edit/edit_page.dart';
+import 'package:signillion/features/document_view/presentation/document_edit_screens/widgets/cancel_done_widgets.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 import 'package:signillion/widgets/app_unfocuser.dart';
 import 'package:signillion/widgets/spaces.dart';
 
-class EdiDrawPage extends StatefulWidget {
-  const EdiDrawPage({super.key});
+@RoutePage()
+class DocumentDrawSignatureScreen extends StatefulWidget {
+  const DocumentDrawSignatureScreen({super.key});
   @override
-  State<EdiDrawPage> createState() => _EdiDrawPageState();
+  State<DocumentDrawSignatureScreen> createState() =>
+      _DocumentDrawSignatureScreenState();
 }
 
-class _EdiDrawPageState extends State<EdiDrawPage> {
+class _DocumentDrawSignatureScreenState
+    extends State<DocumentDrawSignatureScreen> {
   int index = 1;
 
   late SignatureController controller;
@@ -28,57 +32,26 @@ class _EdiDrawPageState extends State<EdiDrawPage> {
     super.initState();
   }
 
+  Image? img;
+
   @override
   Widget build(BuildContext context) {
     return AppUnfocuser(
       child: Scaffold(
         body: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 70, left: 12, right: 25),
-              child: Row(
-                children: [
-                  const SizedBox(width: 10),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EditPage(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Cancel',
-                      style: AppTextStyles.s16W500(
-                          color: AppColors.colorBlue0821AE),
-                    ),
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EditPage(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Done',
-                      style: AppTextStyles.s16W500(
-                          color: AppColors.colorBlue0821AE),
-                    ),
-                  ),
-                ],
-              ),
+            CancelDoneWidgets(
+              onDone: () async {
+                final result = await controller.toPngBytes();
+                if (result != null) {
+                  img = Image.memory(result);
+                  Navigator.of(context).pop(img);
+                } else {
+                  Navigator.pop(context);
+                }
+              },
             ),
-            const Divider(
-              thickness: 1.50,
-              height: 30,
-              color: AppColors.colorGreyD9D9D9,
-            ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 35),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

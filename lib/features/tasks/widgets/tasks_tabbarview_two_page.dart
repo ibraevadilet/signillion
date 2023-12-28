@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:signillion/core/images/app_images.dart';
-import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/widgets/list_tasks_item_widget.dart';
 
 class TasksTabbarviewTwoPage extends StatefulWidget {

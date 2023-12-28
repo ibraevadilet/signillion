@@ -20,8 +20,8 @@ class _TasksTabbarviewState extends State<TasksTabbarview> {
           onTap: () {},
           color: AppColors.colorRedFA3E23,
         ),
-         ListTasksItem(
-              onTap: () {},
+        ListTasksItem(
+          onTap: () {},
           name: 'If a task is too loooooooooooooong\nit looks like this',
           data: '20h30 left',
           color: AppColors.colorAmberFBD242,

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:signillion/core/formatters/shapes.dart';
+import 'package:signillion/core/functions/push_router_func.dart';
 import 'package:signillion/core/images/app_images.dart';
-import 'package:signillion/features/pages/delete_page.dart';
-import 'package:signillion/features/pages/documet_dateils_page.dart';
-import 'package:signillion/features/pages/edit/edit_page.dart';
-import 'package:signillion/features/pages/email_a_copy_page_.dart';
-import 'package:signillion/features/pages/history/history_page.dart';
-import 'package:signillion/features/pages/invite_to_sing_page.dart';
-import 'package:signillion/features/pages/share_page.dart';
+import 'package:signillion/routes/mobile_auto_router.gr.dart';
 import 'package:signillion/theme/app_colors.dart';
+import 'package:signillion/widgets/bottom_top_widget.dart';
 import 'package:signillion/widgets/document_settings_padding_dateil.dart';
 import 'package:signillion/widgets/list_documents_item_widget.dart';
 import 'package:signillion/widgets/spaces.dart';
@@ -18,24 +14,26 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
     isScrollControlled: true,
     context: context,
     shape: AppShapes.bottomNavigatorShape(),
-    builder: (context) => DraggableScrollableSheet(
-        maxChildSize: 0.8,
-        minChildSize: 0.4,
-        initialChildSize: 0.8,
-        expand: false,
-        builder: (BuildContext context, ScrollController scrollController) {
-          return Container(
-            decoration: const BoxDecoration(
-              color: AppColors.colorBlue0821AE,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
+    builder: (context) => Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        Container(
+          padding: const EdgeInsets.only(left: 15, right: 10, top: 25),
+          decoration: const BoxDecoration(
+            color: AppColors.colorBlue0821AE,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            width: context.width,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 10, top: 25),
-              child: Container(
+          ),
+          width: context.width,
+          child: DraggableScrollableSheet(
+            maxChildSize: 0.8,
+            minChildSize: 0.4,
+            initialChildSize: 0.8,
+            expand: false,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -61,12 +59,8 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             title: 'Invite to Sign',
                             icon: AppImages.userAddIconSvg,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const InviteToSingPage(),
-                                ),
+                              AppRouting.pushFunction(
+                                const InviteToSingRoute(),
                               );
                             },
                           ),
@@ -74,23 +68,15 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             title: 'Email a copy',
                             icon: AppImages.messageIconSvg,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EmailACopyPage(),
-                                ),
-                              );
+                              AppRouting.pushFunction(const EmailACopyRoute());
                             },
                           ),
                           DocumentSettingsPaddingDateil(
                             title: 'Edit',
                             icon: AppImages.editIconSvg,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EditPage(),
-                                ),
+                              AppRouting.pushFunction(
+                                const DocumentEditMainRoute(),
                               );
                             },
                           ),
@@ -98,11 +84,8 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             title: 'Share',
                             icon: AppImages.shareIconSvg,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SharePage(),
-                                ),
+                              AppRouting.pushFunction(
+                                const DocumentShareRoute(),
                               );
                             },
                           ),
@@ -110,12 +93,8 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             title: 'Document details',
                             icon: AppImages.documentsDateilIconSvg,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const DocumetDateilsPage(),
-                                ),
+                              AppRouting.pushFunction(
+                                const DocumetDateilRoute(),
                               );
                             },
                           ),
@@ -135,7 +114,11 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             widthIcon: 18,
                             title: 'Archive',
                             icon: AppImages.bookIconSvg,
-                            onTap: () {},
+                            onTap: () {
+                              AppRouting.pushAndPopUntilFunction(
+                                HiddenDrawerRoute(initScreen: 4),
+                              );
+                            },
                           ),
                           DocumentSettingsPaddingDateil(
                             widthText: 13,
@@ -150,7 +133,11 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             left: 27,
                             title: 'Move',
                             icon: AppImages.moveIconSvg,
-                            onTap: () {},
+                            onTap: () {
+                              AppRouting.pushFunction(
+                                const DocumentMoveToRoute(),
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -166,12 +153,7 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             title: 'History',
                             icon: AppImages.timeIconSvg,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HistoryPage(),
-                                ),
-                              );
+                              AppRouting.pushFunction(const HistoryRoute());
                             },
                           ),
                           DocumentSettingsPaddingDateil(
@@ -183,7 +165,9 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             widthIcon: 27,
                             title: 'Duplicate',
                             icon: AppImages.folderIconSvg,
-                            onTap: () {},
+                            onTap: () {
+                              AppRouting.pushFunction(const DuplicateRoute());
+                            },
                           ),
                           DocumentSettingsPaddingDateil(
                             widthText: 13,
@@ -192,12 +176,7 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                             title: 'Delete',
                             icon: AppImages.deleteIconSvg,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const DeletePage(),
-                                ),
-                              );
+                              AppRouting.pushFunction(const DeleteRoute());
                             },
                           ),
                         ],
@@ -205,9 +184,12 @@ Future<void> showDocumentSettingsSheet(BuildContext context) async {
                     ],
                   ),
                 ),
-              ),
-            ),
-          );
-        }),
+              );
+            },
+          ),
+        ),
+        const BottomTopWidget(),
+      ],
+    ),
   );
 }

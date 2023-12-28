@@ -6,7 +6,7 @@ import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 import 'package:signillion/widgets/spaces.dart';
 
-Future<void> showDeleteSheet(BuildContext context) async {
+Future<void> showDoneEditSheet(BuildContext context) async {
   await showModalBottomSheet(
     isScrollControlled: true,
     context: context,
@@ -45,7 +45,7 @@ Future<void> showDeleteSheet(BuildContext context) async {
                       const SizedBox(height: 10),
                       Center(
                         child: Text(
-                          'Are you sure to delete?',
+                          'Are you done editing?',
                           style: AppTextStyles.s18Wbold(
                             color: AppColors.colorGrey474747,
                           ),
@@ -54,18 +54,19 @@ Future<void> showDeleteSheet(BuildContext context) async {
                       const SizedBox(height: 20),
                       InkWell(
                         onTap: () {
-                     
+                          Navigator.pop(context);
+                          Navigator.pop(context);
                         },
                         child: Row(
                           children: [
                             const SizedBox(width: 20),
                             SvgPicture.asset(
-                              AppImages.trIconSvg,
-                              width: 30,
+                              AppImages.saveIconSvg,
+                              width: 25,
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              'Yes',
+                              'Save document',
                               style: AppTextStyles.s20W400(
                                 color: AppColors.colorGrey474747,
                               ),
@@ -81,7 +82,9 @@ Future<void> showDeleteSheet(BuildContext context) async {
                         color: AppColors.colorGreyD9D9D9,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                         child: Row(
                           children: [
                             const SizedBox(width: 20),
@@ -91,7 +94,7 @@ Future<void> showDeleteSheet(BuildContext context) async {
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              'No',
+                              'Close document',
                               style: AppTextStyles.s20W400(
                                 color: AppColors.colorGrey474747,
                               ),

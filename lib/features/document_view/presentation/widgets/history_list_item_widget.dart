@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 
-class HistoryDateil extends StatelessWidget {
-  const HistoryDateil({
+class HistoryListItemWidget extends StatelessWidget {
+  const HistoryListItemWidget({
     super.key,
     this.text,
     this.textOne,

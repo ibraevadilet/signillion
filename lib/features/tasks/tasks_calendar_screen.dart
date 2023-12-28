@@ -1,22 +1,27 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:signillion/core/formatters/date_format.dart';
 import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 import 'package:signillion/widgets/app_unfocuser.dart';
 import 'package:signillion/widgets/bottom_buttons/bottom_buttons.dart';
-import 'package:signillion/widgets/custom_text_field_trhee.dart';
+import 'package:signillion/widgets/custom_app_bar.dart';
 import 'package:signillion/widgets/spaces.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class TasksCalendar extends StatefulWidget {
-  const TasksCalendar({super.key});
+@RoutePage()
+class TasksCalendarScreen extends StatefulWidget {
+  const TasksCalendarScreen({super.key});
   @override
-  State<TasksCalendar> createState() => _TasksCalendarState();
+  State<TasksCalendarScreen> createState() => _TasksCalendarScreenState();
 }
 
-class _TasksCalendarState extends State<TasksCalendar> {
-  DateTime toDay = DateTime.now();
+class _TasksCalendarScreenState extends State<TasksCalendarScreen> {
+  final focusedDay = DateTime.now();
+  DateTime? rangeStart;
+  DateTime? rangeEnd;
   @override
   Widget build(BuildContext context) {
     return AppUnfocuser(
@@ -24,7 +29,8 @@ class _TasksCalendarState extends State<TasksCalendar> {
         bottomNavigationBar: const BottomButtons(
           isRightActive: true,
         ),
-        appBar: AppBar(
+        appBar: CustomAppBar(
+          iconColor: AppColors.color100Blue0921B0,
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20),
@@ -64,9 +70,36 @@ class _TasksCalendarState extends State<TasksCalendar> {
                             formatButtonVisible: false,
                             titleCentered: true,
                           ),
-                          focusedDay: toDay,
+                          calendarStyle: const CalendarStyle(
+                            rangeEndDecoration: BoxDecoration(
+                              color: AppColors.color100Blue0921B0,
+                              shape: BoxShape.circle,
+                            ),
+                            rangeStartDecoration: BoxDecoration(
+                              color: AppColors.color100Blue0921B0,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          focusedDay: focusedDay,
                           firstDay: DateTime.utc(2010, 01, 01),
                           lastDay: DateTime.utc(2030, 12, 31),
+                          rangeStartDay: rangeStart,
+                          rangeEndDay: rangeEnd,
+                          onDaySelected: (selectedDay, focusedDay) {
+                            if (rangeStart == null && rangeEnd == null) {
+                              rangeStart = selectedDay;
+                            } else if (rangeStart != null && rangeEnd == null) {
+                              if (selectedDay.isAfter(
+                                rangeStart!.subtract(const Duration(days: 1)),
+                              )) {
+                                rangeEnd = selectedDay;
+                              }
+                            } else if (rangeStart != null && rangeEnd != null) {
+                              rangeEnd = null;
+                              rangeStart = selectedDay;
+                            }
+                            setState(() {});
+                          },
                         ),
                       ),
                       const Spacer(),
@@ -82,32 +115,53 @@ class _TasksCalendarState extends State<TasksCalendar> {
                         child: Row(
                           children: [
                             const SizedBox(width: 8),
-                            const Expanded(
-                              child: SizedBox(
-                                width: 106,
-                                height: 59,
-                                child: CustomTextFieldTrhee(
-                                  labelText: 'From',
+                            Expanded(
+                              child: Container(
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(
+                                    width: 0.5,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                height: 40,
+                                child: Text(
+                                  rangeStart != null
+                                      ? AppDateFormats.formatDdMMYyyy
+                                          .format(rangeStart!)
+                                      : 'From',
                                 ),
                               ),
                             ),
                             const SizedBox(width: 8),
-                            const Expanded(
-                              child: SizedBox(
-                                width: 106,
-                                height: 59,
-                                child: CustomTextFieldTrhee(
-                                  labelText: 'To',
+                            Expanded(
+                              child: Container(
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(
+                                    width: 0.5,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                height: 40,
+                                child: Text(
+                                  rangeEnd != null
+                                      ? AppDateFormats.formatDdMMYyyy
+                                          .format(rangeEnd!)
+                                      : 'To',
                                 ),
                               ),
                             ),
                             const SizedBox(width: 8),
                             Expanded(
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
                                 child: Container(
-                                  height: 59,
-                                  width: 106,
+                                  height: 40,
                                   decoration: BoxDecoration(
                                     color: Colors.blue,
                                     borderRadius: BorderRadius.circular(16),

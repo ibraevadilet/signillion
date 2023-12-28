@@ -59,6 +59,8 @@ dependencies:
   table_calendar: ^3.0.9
   signature: ^5.4.1
   google_fonts: ^6.1.0
+  share_plus: ^7.2.1
+  widgets_to_image: ^0.0.2
 
 dev_dependencies:
   flutter_test:

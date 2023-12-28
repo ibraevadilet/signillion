@@ -14,5 +14,18 @@ class AppRouter extends $AppRouter {
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         AutoRoute(page: WebViewRoute.page),
+        AutoRoute(page: TaskAddRoute.page),
+        AutoRoute(page: TasksCalendarRoute.page),
+        AutoRoute(page: InviteToSingRoute.page),
+        AutoRoute(page: EmailACopyRoute.page),
+        AutoRoute(page: DeleteRoute.page),
+        AutoRoute(page: DocumetDateilRoute.page),
+        AutoRoute(page: DocumentShareRoute.page),
+        AutoRoute(page: HistoryRoute.page),
+        AutoRoute(page: DocumentMoveToRoute.page),
+        AutoRoute(page: DuplicateRoute.page),
+        AutoRoute(page: DocumentEditMainRoute.page),
+        AutoRoute(page: DocumentDrawSignatureRoute.page),
+        AutoRoute(page: DocumentTypeSignatureRoute.page),
       ];
 }

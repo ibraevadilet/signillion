@@ -29,10 +29,11 @@ class ButtunDateil extends StatelessWidget {
           vertical: 5,
         ),
         decoration: ShapeDecoration(
+          color: isActive ? colorTwo : null,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               width: 2,
-              color: isActive ? Colors.deepPurple : colorTwo,
+              color: colorTwo,
             ),
             borderRadius: BorderRadius.circular(28),
           ),
@@ -42,7 +43,7 @@ class ButtunDateil extends StatelessWidget {
             Text(
               text,
               style: AppTextStyles.s12W400(
-                color: isActive ? Colors.deepPurple : color,
+                color: isActive ? Colors.white : color,
               ),
             ),
           ],

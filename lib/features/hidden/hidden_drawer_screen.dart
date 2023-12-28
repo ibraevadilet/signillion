@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:signillion/core/functions/push_router_func.dart';
 import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/features/archive/archive.dart';
 import 'package:signillion/features/documents/documents.dart';
@@ -10,10 +11,10 @@ import 'package:signillion/features/hidden/widgets/screen_hidden_drawer_custom.d
 import 'package:signillion/features/home/presentation/home_screen/home_screen.dart';
 import 'package:signillion/features/profile/profile.dart';
 import 'package:signillion/features/settings/settings.dart';
-import 'package:signillion/features/tasks/tasks_calendar.dart';
 import 'package:signillion/features/tasks/tasks_screen.dart';
 import 'package:signillion/features/templates/templates.dart';
 import 'package:signillion/features/trash_bin/trash_bin.dart';
+import 'package:signillion/routes/mobile_auto_router.gr.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 
@@ -145,7 +146,7 @@ class _HiddenDrawerScreenState extends State<HiddenDrawerScreen> {
       ),
       ScreenHiddenDrawerCustom(
         ItemHiddenMenuCustom(
-          icon: AppImages.profileIconSvg,
+          icon: AppImages.settingsIconSvg,
           name: 'Settings',
           baseStyle: AppTextStyles.s14W400(),
           selectedStyle: AppTextStyles.s17W600(),
@@ -183,12 +184,8 @@ class _HiddenDrawerScreenState extends State<HiddenDrawerScreen> {
                     title == 'Tasks'
                         ? InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const TasksCalendar(),
-                                ),
-                              );
+                              AppRouting.pushFunction(
+                                  const TasksCalendarRoute());
                             },
                             child: SvgPicture.asset(
                               AppImages.tasksAppbarIconSvg,

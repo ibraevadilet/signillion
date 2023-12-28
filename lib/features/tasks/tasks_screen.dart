@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:signillion/features/tasks/tasks_page/tasks_tabbarview_page.dart';
-import 'package:signillion/features/tasks/tasks_page/tasks_tabbarview_two_page.dart';
+import 'package:signillion/features/tasks/widgets/tasks_tabbarview_page.dart';
+import 'package:signillion/features/tasks/widgets/tasks_tabbarview_two_page.dart';
 import 'package:signillion/theme/app_colors.dart';
 import 'package:signillion/theme/app_text_styles.dart';
 import 'package:signillion/widgets/bottom_buttons/bottom_buttons.dart';
@@ -23,6 +23,7 @@ class _TasksScreenState extends State<TasksScreen> {
         length: 2,
         child: Column(
           children: [
+            const SizedBox(height: 12),
             Center(
               child: Container(
                 height: 45,

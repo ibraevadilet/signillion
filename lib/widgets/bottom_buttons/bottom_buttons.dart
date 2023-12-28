@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:signillion/core/functions/push_router_func.dart';
 import 'package:signillion/core/images/app_images.dart';
 import 'package:signillion/features/home/presentation/home_screen/widgets/bottom_button_item_widget.dart';
-import 'package:signillion/features/tasks/tasks_add.dart';
 import 'package:signillion/routes/mobile_auto_router.gr.dart';
 
 class BottomButtons extends StatelessWidget {
@@ -36,12 +35,7 @@ class BottomButtons extends StatelessWidget {
         BottomButtomItem(
           image: AppImages.tasksIconSvg,
           onTapTwo: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const TasksOpen(),
-              ),
-            );
+            AppRouting.pushFunction(const TaskAddRoute());
           },
           isSelected: isRightActive,
           title: 'Tasks',

@@ -22,6 +22,7 @@ class _DocumentsState extends State<Documents> {
         length: 2,
         child: Column(
           children: [
+            const SizedBox(height: 12),
             Center(
               child: Container(
                 height: 45,
