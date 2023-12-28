@@ -21,39 +21,41 @@ class _TemplatesState extends State<Templates> {
         length: 2,
         child: Column(
           children: [
-            Container(
-              height: 45,
-              width: 360,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: AppColors.colorGreyfromARGB,
-                boxShadow: const [
-                  BoxShadow(
-                    offset: Offset(0, 6),
-                    color: AppColors.colorGrey9A9A9A,
-                    blurRadius: 10,
-                    inset: true,
-                  ),
-                ],
-              ),
-              child: TabBar(
-                indicatorSize: TabBarIndicatorSize.tab,
-                labelColor: Colors.black,
-                labelStyle: AppTextStyles.s16W500(),
-                unselectedLabelColor: Colors.black,
-                unselectedLabelStyle: AppTextStyles.s16W500(),
-                indicator: BoxDecoration(
-                  color: Colors.white,
+            Center(
+              child: Container(
+                height: 45,
+                width: 360,
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
+                  color: AppColors.colorGreyfromARGB,
+                  boxShadow: const [
+                    BoxShadow(
+                      offset: Offset(0, 6),
+                      color: AppColors.colorGrey9A9A9A,
+                      blurRadius: 10,
+                      inset: true,
+                    ),
+                  ],
                 ),
-                tabs: const [
-                  Tab(
-                    text: 'My templates',
+                child: TabBar(
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  labelColor: Colors.black,
+                  labelStyle: AppTextStyles.s16W500(),
+                  unselectedLabelColor: Colors.black,
+                  unselectedLabelStyle: AppTextStyles.s16W500(),
+                  indicator: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
                   ),
-                  Tab(
-                    text: 'Shared',
-                  ),
-                ],
+                  tabs: const [
+                    Tab(
+                      text: 'My templates',
+                    ),
+                    Tab(
+                      text: 'Shared',
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(

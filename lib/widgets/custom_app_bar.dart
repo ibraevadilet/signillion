@@ -8,13 +8,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.titleWidget,
     this.centerTitle = true,
     this.actions,
-    Key? key,
+    Key? key, this.titleTextStyle,
   }) : super(key: key);
   final String? title;
   final Widget? icon;
   final Widget? titleWidget;
   final bool centerTitle;
   final List<Widget>? actions;
+  final TextStyle? titleTextStyle;
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -22,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: titleWidget ?? FittedBox(child: Text(title!)),
-      titleTextStyle: AppTextStyles.s18W700(),
+      titleTextStyle: titleTextStyle ?? AppTextStyles.s18W700(),
       elevation: 0,
       centerTitle: centerTitle,
       iconTheme: const IconThemeData(
