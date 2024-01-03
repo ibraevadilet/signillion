@@ -51,7 +51,6 @@ class _DocumentDrawSignatureScreenState
                 }
               },
             ),
-            const SizedBox(height: 35),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -81,17 +80,18 @@ class _DocumentDrawSignatureScreenState
               ],
             ),
             const SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Center(
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Container(
-                  height: 272,
+                  alignment: Alignment.bottomCenter,
                   width: context.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: AppColors.color10GreyECECEC,
                   ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       ClipRRect(
                         borderRadius: const BorderRadius.only(
@@ -118,12 +118,13 @@ class _DocumentDrawSignatureScreenState
                           color: AppColors.color10GreyAAAAAA,
                         ),
                       ),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ),
               ),
             ),
-            const Spacer(),
+            const SizedBox(height: 15),
             Row(
               children: [
                 const Spacer(),
